@@ -14,14 +14,29 @@ public abstract class Calculator {
 	}
 
 	public void execute() {
-		// 두 정수를 입력 받는다.
-		this.inputValues();
-		
-		// 계산을 수행한다.
-		int result = this.calculate();
-		
-		// 결과를 출력한다.
-		this.showResult(result);
+		while (true) {
+			// 두 정수를 입력 받는다.
+			this.inputValues();
+			
+			/*if (getOperator().equals("/")) {
+				if (value2 == 0) {
+					break;
+				}
+			} else {
+				if (value1 == 0 && value2 == 0) {
+					break;
+				}
+			}*/
+			if (isExitCondition()) {
+				break;
+			}
+			
+			// 계산을 수행한다.
+			int result = this.calculate();
+			
+			// 결과를 출력한다.
+			this.showResult(result);
+		}
 		
 		this.scanner.close();
 		System.out.println("프로그램을 종료합니다.");
@@ -41,5 +56,9 @@ public abstract class Calculator {
 	}
 	
 	public abstract String getOperator();
+	
+	public boolean isExitCondition() {
+		return (value1 == 0 && value2 == 0);
+	}
 	
 }
