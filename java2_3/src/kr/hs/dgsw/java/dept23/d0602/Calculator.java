@@ -28,7 +28,7 @@ public class Calculator {
 		thread.start();
 	}
 	
-	public void addValues(InputValues values) {
+	public synchronized void addValues(InputValues values) {
 			queue.add(values);
 			notify();
 	}
@@ -50,8 +50,12 @@ public class Calculator {
 		new Thread(inputThread).start();
 		
 		calculator.makeAdderThreads();
-		//calculator.makeAdderThreads();
-		//calculator.makeAdderThreads();
+		calculator.makeAdderThreads();
+		calculator.makeAdderThreads();
+		calculator.makeAdderThreads();
+		calculator.makeAdderThreads();
+		calculator.makeAdderThreads();
+		calculator.makeAdderThreads();
 		
 	}
 }

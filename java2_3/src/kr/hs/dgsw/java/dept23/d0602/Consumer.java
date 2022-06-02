@@ -12,6 +12,7 @@ public class Consumer implements Runnable {
 	public void run() {
 		while (true) {
 			
+			
 			synchronized (buffer) {
 				try {
 					buffer.wait();

@@ -10,7 +10,10 @@ public class AdderThread implements Runnable {
 	
 	@Override
 	public void run() {
+		InputValues values = null;
+		
 		while (true) {
+			
 			synchronized (calculator) {
 				try {
 					calculator.wait();
@@ -18,10 +21,11 @@ public class AdderThread implements Runnable {
 					break;
 				}
 				
-				InputValues values = calculator.getInputValues();
-				if (values != null) {
-					calculateAndPrint(values);
-				}
+				values = calculator.getInputValues();
+			}
+
+			if (values != null) {
+				calculateAndPrint(values);
 			}
 		}
 		
